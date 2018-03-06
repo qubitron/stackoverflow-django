@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 import zipfile
 import shutil
+import os
 
 def downloadSurvey():
     url = "https://drive.google.com/uc?export=download&id=0B6ZlG_Eygdj-c1kzcmUxN05VUXM"
@@ -16,6 +17,7 @@ def downloadSurvey():
 
     shutil.move("survey2017/survey_results_public.csv", "survey2017.csv")
     shutil.rmtree("survey2017")
+    os.remove("survey2017.zip")
 
 data = None
 filtered = None
