@@ -1,0 +1,39 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<h2>Frameworks used by {{ language }}</h2>
+
+<canvas id="myChart"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+<script>
+    var frameworks = {{frameworksJson|safe}};
+    var labels = [];
+    var values = [];
+    for (var key in frameworks) {
+        labels.push(key);
+        values.push(frameworks[key])
+    }
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'bar',
+
+        // The data for our dataset
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "My First dataset",
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: values,
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+    });
+</script>
+
+{% endblock %}
