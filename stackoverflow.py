@@ -42,6 +42,8 @@ def frameworksByLanguage(language):
                 frameworks[framework] += 1
     return frameworks
 
+frameworksByLanguage()
+
 if __name__ == "__main__":
     downloadSurvey()
     print(frameworksByLanguage("Python"))
